@@ -73,15 +73,14 @@
 				<select name = "produt_id" style="width: 100px;">
 					<c:forEach items="${productDTOCheck}" var="prodDTO">
 					
-					<!-- c:if문 써줘야? ajax써줘야?-->
+					<!-- c:if문 써줘야??-->
 						<option >상품 사이즈:${prodDTO.product_size}/상품수량:${prodDTO.product_quantity}</option>
 					</c:forEach>
 				</select>
 				
 			</div> --%>
 		
-		
-			
+
 		<%-- 
 			
 			<form action ="" method="post">
