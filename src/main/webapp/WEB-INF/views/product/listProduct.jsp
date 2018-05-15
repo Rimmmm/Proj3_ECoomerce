@@ -36,7 +36,7 @@
 				</thead>
 				
 				<tbody>
-				<!-- itemType을 1로 주었을 때 상의 상품만 나오도록 -->
+				<!-- itemType을 1로 주었을 때 상의 상품만 나오도록  ?!-->
 				
 					<c:forEach items="${list}" var="productDTOList">
 						<tr>
