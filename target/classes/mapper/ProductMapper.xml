@@ -11,9 +11,27 @@
 	<!-- 상품 자세히 보기 -->
 	<select id="productDetail" resultType="proj.ecom.product.domain.ProductDTO">
 
-		select * from ecommerce_product where product_id=#{product_id}
+		SELECT product_itemType, product_sortType, product_name, product_image, product_price 
+		FROM ecommerce_product where product_id=#{product_id}
 	</select>
+	
+	<!-- 상품 사이즈 및 수량 확인하기 -->
+	<select id="productDetail2" resultType="proj.ecom.product.domain.ProductDTO">
+		select product_size, product_quantity from ecommerce_productSize where product_id=#{product_id}
+	</select>
+	
+	
+	<!-- <select id="productDetail" resultType="proj.ecom.product.domain.ProductDTO">
 
+		SELECT ep.product_itemType, ep.product_sortType, ep.product_name, ep.product_image, ep.product_price, eps.product_size, eps.product_quantity
+		
+		FROM ecommerce_product ep INNER JOIN ecommerce_productSize eps 
+		ON ep.product_id = eps.product_id 
+		where eps.product_id=#{eps.product_id}
+	</select> -->
+	
+	<!-- productSize테이블에서 사이즈와 수량을 가져와야함. 조건은 product_id   -->
+	<!-- select product_size, product_quantity from ecommerce_productSize where product_id=#{product_id}-->
 
 
 <!-- 	<select id="listDao" resultType="spring.mybatis.dto.ContentDto">
@@ -32,12 +50,7 @@
 	<!-- <select id="getTotalCount" resultType="Integer">
 		select count(product_id) from product
 	</select> -->
-	
-	<!-- <select id="listProduct" resultType="proj.ecom.product.domain.ProductDTO">		
-		select product_name, product_price, product_image from product WHERE product_itemType=#{product_itemType, jdbcType=INTEGER} and 
-		product_sortType=#{product_sortType, jdbcType=INTEGER} order by product_id desc
-		]]>
-	</select> -->
+
 	
 	
 </mapper>

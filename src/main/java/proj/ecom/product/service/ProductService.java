@@ -8,20 +8,21 @@ import org.springframework.stereotype.Service;
 
 import proj.ecom.product.dao.ProductDAO;
 import proj.ecom.product.domain.ProductDTO;
+import proj.ecom.product.domain.ProductSizeDTO;
 import proj.ecom.util.Criteria;
 
 @Service
 public class ProductService implements ProductService_Interface{
 	@Inject ProductDAO productDao;
 	
-	//1. 각 상품 보기 - 목차에서 눌렀을 때 상의, 하의, 신발
+	
 
 	@Override
 	public int getTotalCount() {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
+	//상품 목록 전체 조회
 	@Override
 	public List<ProductDTO> listProduct(int product_itemType, int product_sortType, Criteria cri) {
 		System.out.println("product_itemType service "+product_itemType);
@@ -29,17 +30,17 @@ public class ProductService implements ProductService_Interface{
 
 		return productDao.listProduct(product_itemType, product_sortType, cri);
 	}
-
+	//상품 자세히 보기
 	@Override
 	public ProductDTO productDetail(int product_id) {
 		
 		return productDao.productDetail( product_id);
 	}
-
+	
+	//상품 사이즈와 수량 확인
 	@Override
-	public ProductDTO productQuantityCheck(int product_id) {
-		
-		return productDao.productQuantityCheck(product_id);
+	public ProductSizeDTO productSize(int product_id) {
+		return productDao.productSize(product_id);
 	}
 
 

@@ -50,7 +50,7 @@ public class ProductController {
 		return "main";
 	}
 	
-	//4. 상품 자세히보기
+	//4. 상품 자세히보기 & 사이즈 및 수량 확인
 	@RequestMapping(value="productDetail", method=RequestMethod.GET)
 	public String productDetail(
 			@RequestParam("product_id") int product_id, Model model) {
@@ -58,20 +58,16 @@ public class ProductController {
 
 		model.addAttribute("productDto", productService.productDetail(product_id));
 		model.addAttribute("content", "../views/product/productDetail.jsp");
-		
-		
 		return "main";
 	}
-	//5. 상품 수량 확인 
-	/*@RequestMapping(value="productQuantityCheck", method=RequestMethod.GET)
-	public String productQuantityCheck(
+	@RequestMapping(value="productDetail", method=RequestMethod.POST)
+	public String productDetail2(
 			@RequestParam("product_id") int product_id, Model model) {
-		//id를 통해서 size와 quantity 조회해오기(선택칸에서 움직이게) mapper에서 sql문 만들어주기
-		model.addAttribute("productDTOCheck", productService.productQuantityCheck(product_id));
-		model.addAttribute("content", "../views/product/productDetail.jsp");
-		//돌아갈주소를 다르게 해줘야하지 않나 상품별로 다르게 줄 텐데
+		//view에 id를 보내주고 sql문을 통해서 상품의 상세한 정보를 가져온다
 		
+		model.addAttribute("productSizeDto", productService.productSize(product_id));
+		model.addAttribute("content", "../views/product/productDetail.jsp");
 		return "main";
-	}*/
+	}
 	
 }
