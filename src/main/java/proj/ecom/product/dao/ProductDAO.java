@@ -46,4 +46,10 @@ public class ProductDAO implements ProductDAO_Interface{
 		
 		return sqlSession.selectOne(NAMESPACE+".productSize", product_id);
 	}
+
+	public int getTotalCount() {
+		Integer totalCount=sqlSession.selectOne(NAMESPACE+".getTotalCount");  
+		if(totalCount==null) totalCount=0;
+		return totalCount;
+	}
 }

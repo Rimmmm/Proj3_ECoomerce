@@ -20,6 +20,9 @@
 		select product_size, product_quantity from ecommerce_productSize where product_id=#{product_id}
 	</select>
 	
+	<select id="getTotalCount" resultType="Integer">
+		select count(product_id) from ecommerce_product
+	</select>
 	
 	<!-- <select id="productDetail" resultType="proj.ecom.product.domain.ProductDTO">
 

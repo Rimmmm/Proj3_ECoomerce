@@ -19,8 +19,8 @@ public class ProductService implements ProductService_Interface{
 
 	@Override
 	public int getTotalCount() {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		return productDao.getTotalCount();
 	}
 	//상품 목록 전체 조회
 	@Override

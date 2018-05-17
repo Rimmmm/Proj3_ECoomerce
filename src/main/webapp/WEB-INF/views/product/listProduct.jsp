@@ -89,21 +89,22 @@
 		<div class="row text-center">
 			<ul class="pagination">
 				<c:if test="${pm.cri.page>1}">
-					<li><a href="/product/listProductTop?product_itemType=1&product_sortType=0&page=${pm.cri.page-1}&perPage=${pm.cri.perPage}">&laquo;</a></li>
+					<li><a href="/product/productDetail?product_itemType=1&product_sortType=0&page=${pm.cri.page-1}&perPage=${pm.cri.perPage}">&laquo;</a></li>
 				</c:if>
 			
 			
 				<c:forEach var="idx" begin="${pm.startPageNum}" end="${pm.endPageNum}">
 					<li class="${idx==pm.cri.page?'active':''}"> 
-						<a href="/product/listProductTop?product_itemType=1&product_sortType=0?page=${idx}&perPage=${pm.cri.perPage}">${idx}<br></a>
+						<a href="/product/productDetail?product_itemType=1&product_sortType=0?page=${idx}&perPage=${pm.cri.perPage}">${idx}<br></a>
 					</li>
 				</c:forEach>
 				
 				<c:if test="${pm.cri.page<pm.totalPage}">
-					<li><a href="/product/listProductTop?product_itemType=1&product_sortType=0?page=${pm.cri.page+1}&perPage=${pm.cri.perPage}">&raquo;</a></li>
+					<li><a href="/product/productDetail?product_itemType=1&product_sortType=0?page=${pm.cri.page+1}&perPage=${pm.cri.perPage}">&raquo;</a></li>
 				</c:if>
 			</ul>
 		</div>
+		
 		
 	
 
