@@ -68,13 +68,14 @@
                    <label for="quantity">상품 수량:&nbsp;</label>
                    <select name="amount">
                    <!-- c:if 조건 추가해줘서 분기점 필요 -->
-                   <c:forEach begin="1" end="10" var="i">
+                   <c:forEach begin="1" end="5" var="i">
                         <option value="${i}">${i}</option>
                    </c:forEach>
                    </select>&nbsp;개
                   
-                   <div class="form-group"> <input type="submit" value="장바구니에 담기"> </div>
-                   
+					<div class="form-group">
+					 	<button class="btn btn-info">장바구니 담기</button>
+	                </div>                   
             </div>
 			</form>
 
