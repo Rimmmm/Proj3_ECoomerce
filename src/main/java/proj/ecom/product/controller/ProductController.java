@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import proj.ecom.product.domain.ProductSizeDTO;
 import proj.ecom.product.service.ProductService_Interface;
 import proj.ecom.util.Criteria;
 import proj.ecom.util.PageMaker;
@@ -36,15 +37,12 @@ public class ProductController {
 		model.addAttribute("content", "../views/product/listProduct.jsp");
 		
 		model.addAttribute("list", productService.listProduct(product_itemType, product_sortType, cri));
-		
+		System.out.println("productService : "+productService.listProduct(product_itemType, product_sortType, cri));
 		
 		PageMaker pm = new PageMaker();
 		pm.setCri(cri);
 		pm.setTotalCount(productService.getTotalCount());
 		
-		System.out.println("getTotalCount 전체 상품게시글의 수 " + productService.getTotalCount());
-		System.out.println("getTotalCount 전체 상품게시글의 수 " + pm.getTotalCount());
-		System.out.println("cri + " + pm.getCri());
 		model.addAttribute("pm", pm);
 		
 		return "main";
@@ -57,17 +55,21 @@ public class ProductController {
 		//view에 id를 보내주고 sql문을 통해서 상품의 상세한 정보를 가져온다
 
 		model.addAttribute("productDto", productService.productDetail(product_id));
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		System.out.println("productDto product_id : "+ productService.productDetail(product_id));
+		model.addAttribute("productSizeDtoList", productService.productSize(product_id));
+		System.out.println("productSizeDto의 product_size :" + new ProductSizeDTO().getProduct_size());
 		model.addAttribute("content", "../views/product/productDetail.jsp");
+
 		return "main";
 	}
-	@RequestMapping(value="productDetail", method=RequestMethod.POST)
+	/*@RequestMapping(value="productDetail", method=RequestMethod.POST)
 	public String productDetail2(
 			@RequestParam("product_id") int product_id, Model model) {
 		//view에 id를 보내주고 sql문을 통해서 상품의 상세한 정보를 가져온다
 		
-		model.addAttribute("productSizeDto", productService.productSize(product_id));
 		model.addAttribute("content", "../views/product/productDetail.jsp");
 		return "main";
-	}
+	}*/
 	
 }

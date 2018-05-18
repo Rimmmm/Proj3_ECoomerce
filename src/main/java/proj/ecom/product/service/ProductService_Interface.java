@@ -16,6 +16,6 @@ public interface ProductService_Interface {
 	ProductDTO productDetail(int product_id);
 	
 	//상품 사이즈와 수량확인
-	ProductSizeDTO productSize(int product_id);
+	List<ProductSizeDTO> productSize(int product_id);
 	
 }

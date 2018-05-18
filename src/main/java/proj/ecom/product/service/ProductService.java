@@ -39,7 +39,7 @@ public class ProductService implements ProductService_Interface{
 	
 	//상품 사이즈와 수량 확인
 	@Override
-	public ProductSizeDTO productSize(int product_id) {
+	public List<ProductSizeDTO> productSize(int product_id) {
 		return productDao.productSize(product_id);
 	}
 

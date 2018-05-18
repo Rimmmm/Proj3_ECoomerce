@@ -16,7 +16,7 @@
 	</select>
 	
 	<!-- 상품 사이즈 및 수량 확인하기 -->
-	<select id="productDetail2" resultType="proj.ecom.product.domain.ProductDTO">
+	<select id="productSize" resultType="proj.ecom.product.domain.ProductSizeDTO">
 		select product_size, product_quantity from ecommerce_productSize where product_id=#{product_id}
 	</select>
 	

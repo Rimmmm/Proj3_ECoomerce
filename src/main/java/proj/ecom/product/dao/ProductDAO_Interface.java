@@ -13,7 +13,7 @@ public interface ProductDAO_Interface {
 
 		ProductDTO productDetail(int product_id);
 
-		ProductSizeDTO productSize(int product_id);
+		List<ProductSizeDTO> productSize(int product_id);
 		
 		int getTotalCount();
 }

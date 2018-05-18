@@ -40,11 +40,11 @@ public class ProductDAO implements ProductDAO_Interface{
 		
 		return sqlSession.selectOne(NAMESPACE+".productDetail", product_id);
 	}
-	
+	//mapper에서 productSize
 	@Override
-	public ProductSizeDTO productSize(int product_id) {
+	public List<ProductSizeDTO> productSize(int product_id) {
 		
-		return sqlSession.selectOne(NAMESPACE+".productSize", product_id);
+		return sqlSession.selectList(NAMESPACE+".productSize", product_id);
 	}
 
 	public int getTotalCount() {

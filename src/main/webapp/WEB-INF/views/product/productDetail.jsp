@@ -53,15 +53,21 @@
 			<div class="form-group">
 				<!-- 장바구니에 보내줘야할 데이터 무엇? -->
 				<input type="hidden" name="productId" value="${productDto.product_id}">
-				<input type="hidden" name="productSize" value="${productSizeDto.product_size}">
-				<input type="hidden" name="productQuantity" value="${productSizeDto.product_quantity}">
+				
+				<c:forEach items="${productSizeDtoList}" var="dtoSize"  >
+				<input type="hidden" name="productSize" value="${dtoSize.product_size}">
+				</c:forEach>
+				
+				<c:forEach items="${productSizeDtoList}" var="dtoQuantity"  >
+				<input type="hidden" name="productQuantity" value="${dtoQuantity.product_quantity}">
+				</c:forEach>
 				
                     <label for="size">상품 사이즈:&nbsp;</label>
                     <select id="sizeSelect">
                    	<option value="0">상품 사이즈를 선택하세요.</option>
                    
-                   	<c:forEach items="${productSizeDto.product_size}" var="size"  >
-                   		<option value="${size}">${size}</option>
+                   	<c:forEach items="${productSizeDtoList}" var="dtoSize"  >
+                   		<option value="${dtoSize.product_size}">${dto.product_size}</option>
                    	</c:forEach>
                    </select>
                    
