@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 
 import proj.ecom.product.domain.ProductDTO;
+import proj.ecom.product.domain.ProductSizeDTO;
 import proj.ecom.util.Criteria;
 
 @Repository
@@ -39,9 +40,16 @@ public class ProductDAO implements ProductDAO_Interface{
 		
 		return sqlSession.selectOne(NAMESPACE+".productDetail", product_id);
 	}
-
-	public ProductDTO productQuantityCheck(int product_id) {
+	//mapper에서 productSize
+	@Override
+	public List<ProductSizeDTO> productSize(int product_id) {
 		
-		return sqlSession.selectOne(NAMESPACE+".productQuantityCheck", product_id);
+		return sqlSession.selectList(NAMESPACE+".productSize", product_id);
+	}
+
+	public int getTotalCount() {
+		Integer totalCount=sqlSession.selectOne(NAMESPACE+".getTotalCount");  
+		if(totalCount==null) totalCount=0;
+		return totalCount;
 	}
 }

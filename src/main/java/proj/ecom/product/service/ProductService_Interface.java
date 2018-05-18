@@ -3,6 +3,7 @@ package proj.ecom.product.service;
 import java.util.List;
 
 import proj.ecom.product.domain.ProductDTO;
+import proj.ecom.product.domain.ProductSizeDTO;
 import proj.ecom.util.Criteria;
 
 public interface ProductService_Interface {
@@ -14,7 +15,7 @@ public interface ProductService_Interface {
 	//상품 자세히 보기
 	ProductDTO productDetail(int product_id);
 	
-	//상품 재고 확인
-	ProductDTO productQuantityCheck(int product_id);
+	//상품 사이즈와 수량확인
+	List<ProductSizeDTO> productSize(int product_id);
 	
 }

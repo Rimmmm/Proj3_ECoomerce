@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import proj.ecom.product.domain.ProductSizeDTO;
 import proj.ecom.product.service.ProductService_Interface;
 import proj.ecom.util.Criteria;
 import proj.ecom.util.PageMaker;
@@ -36,41 +37,38 @@ public class ProductController {
 		model.addAttribute("content", "../views/product/listProduct.jsp");
 		
 		model.addAttribute("list", productService.listProduct(product_itemType, product_sortType, cri));
-		
+		System.out.println("productService : "+productService.listProduct(product_itemType, product_sortType, cri));
 		
 		PageMaker pm = new PageMaker();
 		pm.setCri(cri);
 		pm.setTotalCount(productService.getTotalCount());
 		
-		System.out.println("getTotalCount 전체 상품게시글의 수 " + productService.getTotalCount());
-		System.out.println("getTotalCount 전체 상품게시글의 수 " + pm.getTotalCount());
-		System.out.println("cri + " + pm.getCri());
 		model.addAttribute("pm", pm);
 		
 		return "main";
 	}
 	
-	//4. 상품 자세히보기
+	//4. 상품 자세히보기 & 사이즈 및 수량 확인
 	@RequestMapping(value="productDetail", method=RequestMethod.GET)
 	public String productDetail(
 			@RequestParam("product_id") int product_id, Model model) {
 		//view에 id를 보내주고 sql문을 통해서 상품의 상세한 정보를 가져온다
 
 		model.addAttribute("productDto", productService.productDetail(product_id));
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		System.out.println("productDto product_id : "+ productService.productDetail(product_id));
+		model.addAttribute("productSizeDtoList", productService.productSize(product_id));
+		System.out.println("productSizeDto의 product_size :" + new ProductSizeDTO().getProduct_size());
 		model.addAttribute("content", "../views/product/productDetail.jsp");
-		
-		
+
 		return "main";
 	}
-	//5. 상품 수량 확인 
-	/*@RequestMapping(value="productQuantityCheck", method=RequestMethod.GET)
-	public String productQuantityCheck(
+	/*@RequestMapping(value="productDetail", method=RequestMethod.POST)
+	public String productDetail2(
 			@RequestParam("product_id") int product_id, Model model) {
-		//id를 통해서 size와 quantity 조회해오기(선택칸에서 움직이게) mapper에서 sql문 만들어주기
-		model.addAttribute("productDTOCheck", productService.productQuantityCheck(product_id));
-		model.addAttribute("content", "../views/product/productDetail.jsp");
-		//돌아갈주소를 다르게 해줘야하지 않나 상품별로 다르게 줄 텐데
+		//view에 id를 보내주고 sql문을 통해서 상품의 상세한 정보를 가져온다
 		
+		model.addAttribute("content", "../views/product/productDetail.jsp");
 		return "main";
 	}*/
 	

@@ -13,27 +13,43 @@ public class ProductDTO implements Serializable {
 	private int product_sortType;
 	private String product_name;
 	private String product_image;
-	private String product_size;
 	private int product_price;
-	private int product_quantity;
+	
+	//ProductSizeDTO class 변수로 가져오기
+	private ProductSizeDTO productSizeDTO;
+	
 	
 	public ProductDTO() {
 		
 	}
+	
 
 
 	public ProductDTO(int product_id, int product_itemType, int product_sortType, String product_name,
-			String product_image, String product_size, int product_price, int product_quantity) {
+			String product_image, int product_price, ProductSizeDTO productSizeDTO) {
 		super();
 		this.product_id = product_id;
 		this.product_itemType = product_itemType;
 		this.product_sortType = product_sortType;
 		this.product_name = product_name;
 		this.product_image = product_image;
-		this.product_size = product_size;
 		this.product_price = product_price;
-		this.product_quantity = product_quantity;
+		this.productSizeDTO = productSizeDTO;
 	}
+	
+
+
+	public ProductSizeDTO getProductSizeDTO() {
+		return productSizeDTO;
+	}
+
+
+
+	public void setProductSizeDTO(ProductSizeDTO productSizeDTO) {
+		this.productSizeDTO = productSizeDTO;
+	}
+
+
 
 	public int getProduct_id() {
 		return product_id;
@@ -93,26 +109,7 @@ public class ProductDTO implements Serializable {
 		this.product_image = product_image;
 	}
 
-	public int getProduct_quantity() {
-		return product_quantity;
-	}
-
-	public void setProduct_quantity(int product_quantity) {
-		this.product_quantity = product_quantity;
-	}
 	
-	
-
-	public String getProduct_size() {
-		return product_size;
-	}
-
-
-	public void setProduct_size(String product_size) {
-		this.product_size = product_size;
-	}
-
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -136,10 +133,14 @@ public class ProductDTO implements Serializable {
 		return true;
 	}
 
+
+
 	@Override
 	public String toString() {
 		return "ProductDTO [product_id=" + product_id + ", product_itemType=" + product_itemType + ", product_sortType="
 				+ product_sortType + ", product_name=" + product_name + ", product_image=" + product_image
-				+ ", product_price=" + product_price + ", product_quantity=" + product_quantity + "]";
+				+ ", product_price=" + product_price + ", productSizeDTO=" + productSizeDTO + "]";
 	}
+
+	
 }

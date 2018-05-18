@@ -3,6 +3,7 @@ package proj.ecom.product.dao;
 import java.util.List;
 
 import proj.ecom.product.domain.ProductDTO;
+import proj.ecom.product.domain.ProductSizeDTO;
 import proj.ecom.util.Criteria;
 
 public interface ProductDAO_Interface {
@@ -11,4 +12,8 @@ public interface ProductDAO_Interface {
 		List<ProductDTO> listProduct(int product_itemType, int product_sortType, Criteria cri);
 
 		ProductDTO productDetail(int product_id);
+
+		List<ProductSizeDTO> productSize(int product_id);
+		
+		int getTotalCount();
 }
