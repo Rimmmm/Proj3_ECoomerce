@@ -14,7 +14,7 @@ import proj.ecom.util.Criteria;
 public class myTest {
 	@Autowired
 	private ProductService_Interface productService;
-	
+	/*
 	@Test
 	public void productDetail() throws Exception{
 		try {
@@ -26,7 +26,7 @@ public class myTest {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
+	}*/
 	
 	
 	
